@@ -29,6 +29,6 @@ npm-debug.log*
 /platforms
 /plugins
 /www
-/config.xml
-/firebase.ts
-/index.html
+/config
+/firebase
+/index

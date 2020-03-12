@@ -1,0 +1,52 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>SIGN UP</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="home">
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <img class="imagenSigUp" src="../../../assets/icon/addClimbing.png">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="camposFormulario">
+          <ion-label position="floting">Email: </ion-label>
+          <ion-input type="text" [(ngModel)]='user.email'></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="camposFormulario">
+          <ion-label position="floting">Password: </ion-label>
+          <ion-input type="password" [(ngModel)]='user.password'></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="camposFormulario">
+          <ion-label position="floting">Confirm Password: </ion-label>
+          <ion-input type="password" [(ngModel)]='user.confirmPassword'></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-label class="labelText">
+        Complete the fields and we will send you instrctions to continue with the sign up
+      </ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="containerSignUp">
+        <ion-button fill="clear" class="buttonInicioSignUp" (click)='register()'>Sign
+          Up</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

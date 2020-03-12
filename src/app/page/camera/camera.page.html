@@ -1,0 +1,88 @@
+<ion-row>
+  <ion-col>
+    <canvas #imageCanvas (touchstart)="startDrawing($event)" (touchmove)="movedHand($event)" (touchend)="endDrawing()">
+    </canvas>
+  </ion-col>
+</ion-row>
+<div *ngIf="mostrar">
+  <!-- Color -->
+  <ion-row>
+    <ion-col *ngFor="let color of colors" [style.background]="color" class="color-block" tappable
+      (click)="selectColor(color)"></ion-col>
+  </ion-row>
+  <ion-radio-group [(ngModel)]="selectedColor">
+    <ion-row>
+      <ion-col *ngFor="let color of colors" class="ion-text-center">
+        <ion-radio [value]="color"></ion-radio>
+      </ion-col>
+    </ion-row>
+  </ion-radio-group>
+  <!-- Circle -->
+  <div *ngFor="let object of objectSrc">
+    <ion-row>
+      <ion-label *ngIf="object==objectSrc[0]" class="labelRow">Hands</ion-label>
+      <ion-label *ngIf="object==objectSrc[1]" class="labelRow">Feet</ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let item of object" [style.background-image]="backgroundCol(item)" class="color-block" tappable
+        (click)="selectObjetNow(item)" class="colImage">
+        <!-- <img class="imagePrint"
+          src="../../../assets/icon/objectPrint/{{item}}.png"> -->
+      </ion-col>
+    </ion-row>
+    <ion-radio-group [(ngModel)]="selectedObject">
+      <ion-row>
+        <ion-col *ngFor="let item of object; index as i" class="colRadio">
+          <ion-radio [value]="item"></ion-radio><br>
+          <ion-label class="namePosition">{{namePosition[i]}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
+  </div>
+  <!-- Radius -->
+  <ion-row>
+    <ion-col>
+      <ion-range min="2" max="100" color="primary" [(ngModel)]="lineWidth">
+        <img width="10%" slot="start" src="../../../assets/icon/radiusCircle.png">
+        <img width="17%" src="../../../assets/icon/radiusCircle.png" slot="end">
+      </ion-range>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button class="btnContinue" (click)="clearCanvas()">Clear All</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button class="btnContinue" (click)="deleteLast()">Delete Last</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button class="btnContinue" (click)="continue()">Continue</ion-button>
+    </ion-col>
+  </ion-row>
+</div>
+<ion-row>
+  <ion-col>
+    <ion-button class="btnContinue" (click)="options()">Options</ion-button>
+  </ion-col>
+</ion-row>
+
+<!-- (mousedown)="startDrawing($event)" (mouseup)="endDrawing()" -->
+<!-- <ion-button expand="full" (click)="clearCanvas()">
+  <ion-icon slot="start" name="image"></ion-icon>
+  Clear
+</ion-button>
+
+<ion-button expand="full" (click)="exportCanvasImage()">
+  <ion-icon slot="start" name="download"></ion-icon>
+  Export Canvas Image
+</ion-button>
+<ion-button color="primary" (click)="drawCircle()">
+  Draw a circle
+</ion-button>
+<ion-button color="primary" (click)="deleteLast()">
+  Delete last
+</ion-button> -->

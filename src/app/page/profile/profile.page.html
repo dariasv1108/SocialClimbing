@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src={{image}}>
+      </ion-avatar>
+      <ion-label>{{user.userNick}}</ion-label>
+      <ion-button (click)='logout()'>Salir</ion-button>
+    </ion-item>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="images">
+        <ion-icon name="images"></ion-icon>
+        <ion-label>Images</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="followers">
+        <ion-icon name="people"></ion-icon>
+        <ion-label>Follow</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

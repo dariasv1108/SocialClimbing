@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <canvas #imageCanvas>
+        </canvas>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="camposFormulario">
+          <ion-label position="floting">Name: </ion-label>
+          <ion-input type="text"></ion-input>
+          <!-- [(ngModel)]='user.email' -->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <!-- <ion-label position="floting">Boulder: </ion-label> -->
+        <ion-item>
+          <ionic-selectable [canSearch]="true">
+            <!-- [(ngModel)]="port" title="Port" itemValueField="id" itemTextField="name" [items]="ports"
+             -->
+          </ionic-selectable>
+      </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item class="camposFormulario">
+          <ion-label position="floting">Level: </ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="btnContinue" (click)="createBoulder()">Continue</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div id="map"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label position="floting" >Name: </ion-label>
+        <ion-input type="text" [(ngModel)]="boulder.name"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="btnContinue" (click)="createBoulder()">Continue</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

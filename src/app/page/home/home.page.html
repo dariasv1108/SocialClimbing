@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true" class="home">
+  <img class="imagenLogo" src="assets/icon/logo.png">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item class="camposFormulario">
+          <ion-label position="floting">Email: </ion-label>
+          <ion-input type="text" [(ngModel)]='user.email'></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="camposFormulario">
+          <ion-label position="floting">Password: </ion-label>
+          <ion-input type="password" [(ngModel)]='user.password'></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="remember">
+          <ion-label>Remember Me?</ion-label>
+          <ion-checkbox slot="start" checked="true"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="clear" class="forgotPassword" routerLink='/forgot-password'>Forgot Password?</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="containerLogin">
+        <ion-button class="buttonInicioLogin" (click)='login()'>Login</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row size="12" >
+      <ion-label class="labelAccount">
+        Dont Have An Account?
+      </ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="containerSignUp">
+        <ion-button fill="clear" class="buttonInicioSignUp" routerLink='/sing-up'><span class="txtBackground">Sign Up</span></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

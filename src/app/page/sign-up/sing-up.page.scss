@@ -1,0 +1,51 @@
+ion-header ion-toolbar {
+    --background: translucent;
+  }
+  ion-title{
+      color: black;
+  }
+.iconoAtras{
+    margin-top: 15px;
+    font-size: 15px;
+    color: black;
+    
+}
+ion-content ion-toolbar {
+    --background: translucent;
+  }
+  .containerSignUp{
+    // margin-top: 10%;
+    text-align: center;
+    letter-spacing: 0.25em;
+    font-size: 30px;
+    padding: 2% 5%;
+  }
+  .camposFormulario{
+    font-size: 15px;
+    border: 1px double black;
+    border-radius: 25px;
+  }
+  
+  .buttonInicioSignUp{
+    width: 80%;
+  height: 100%;
+  font-size: x-large;
+  color: black;
+  --background: url('../../../assets/imgs/botonLogin.jpg'); 
+  --border-radius: 25px ;
+  --border: 2px double rgb(0, 0, 0);
+  }
+  
+  .imagenSigUp{
+    width: 75%;
+  }
+  .labelText{
+    margin-top: 10%;
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+  
+  }
+
+  

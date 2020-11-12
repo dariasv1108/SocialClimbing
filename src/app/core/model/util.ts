@@ -1,9 +1,9 @@
 export class imprimirPantalla {
     private mostrar: boolean = true;
 
-    constructor(mensage: any) {
+    constructor(mensage: any, mensageDos?: any) {
         if (this.mostrar) {
-            console.log(mensage);
+            console.log(mensage, mensageDos);
         }
     }
 }

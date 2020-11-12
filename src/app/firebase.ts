@@ -1,5 +1,5 @@
 const firebaseConfig = {
-    apiKey: '',
+    apiKey: 'AIzaSyCe2qoQgWexp3GrntO-3UQMZB1AYp4eogg',
     authDomain: 'socialclimbing-d0972.firebaseapp.com',
     databaseURL: 'https://socialclimbing-d0972.firebaseio.com',
     projectId: 'socialclimbing-d0972',

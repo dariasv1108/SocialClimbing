@@ -20,7 +20,7 @@ const routes: Routes = [
         loadChildren: () => FollowersPageModule
       },
       {
-        path: 'settings',
+        path: 'settings',//
         loadChildren: () => SettingsPageModule
       },
       {

@@ -36,7 +36,7 @@ export class CreateBoulderPage implements OnInit {
     const loading = await this.loadingCtrl.create();
     loading.present();
     const myLatLng = position;
-    const mapEle = document.getElementById('map');
+    const mapEle = document.getElementById('mapCreate');
     this.mapRef = new google.maps.Map(mapEle, {
       center: myLatLng,
       zoom: 12
@@ -51,7 +51,6 @@ export class CreateBoulderPage implements OnInit {
         loading.dismiss();
         this.addMaker(myLatLng.lat, myLatLng.lng);
       });
-
   }
   private clearMarkers() {
     this.setMapOnAll(null);

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { FollowersPageRoutingModule } from './followers-routing.module';
 
 import { FollowersPage } from './followers.page';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FollowersPageRoutingModule
+    FollowersPageRoutingModule,
+    IonicSelectableModule
   ],
   declarations: [FollowersPage]
 })

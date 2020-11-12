@@ -18,31 +18,33 @@
       <ion-col>
         <ion-item class="camposFormulario">
           <ion-label position="floting">Name: </ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]='block.name'></ion-input>
           <!-- [(ngModel)]='user.email' -->
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <!-- <ion-label position="floting">Boulder: </ion-label> -->
         <ion-item>
-          <ionic-selectable [canSearch]="true">
-            <!-- [(ngModel)]="port" title="Port" itemValueField="id" itemTextField="name" [items]="ports"
-             -->
+          <ion-label position="floting">Boulder: </ion-label>
+          <ionic-selectable item-content [(ngModel)]="boulder" itemValueField="id" itemTextField="name" [items]="boulders"
+            [canSearch]="true" (onSearch)="searchboulders($event)" (onChange)="boulderChange($event)">
           </ionic-selectable>
-      </ion-item>
+        </ion-item>
       </ion-col>
       <ion-col>
         <ion-item class="camposFormulario">
-          <ion-label position="floting">Level: </ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-label position="floting">Level:</ion-label>
+          <ion-select placeholder="Select One" [(ngModel)]="this.block.level">
+            <ion-select-option *ngFor="let level of keys(levels)" >{{level}}</ion-select-option>
+            <!--  -->
+          </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button class="btnContinue" (click)="createBoulder()">Continue</ion-button>
+        <ion-button class="btnContinue" (click)="upload()">Continue</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -10,7 +10,10 @@ import { AuthService } from '../auth/auth.service';
 })
 export class DataProfileServiceService {
 
-  private _data: IProfile;
+  private _data: IProfile = {
+    userNick: "",
+    imageProfile:""
+  };
   private loading;
 
   constructor(private router: Router, private alert: AlertController,
@@ -18,33 +21,50 @@ export class DataProfileServiceService {
   }
 
   addUser() {
-    this.showLoading('Creating...')
-    this.afStore.addImage(this.data, this.afAuth.getCurrentUserUid()).then(() => {
-      this.afStore.addUsers(this.data, this.afAuth.getCurrentUserUid()).then(() => {
+    this.showLoading('Creating...');
+    this.afStore.addImageProfile(this.data, this.afAuth.getUidUser()).then(() => {
+      this.afStore.addUsers(this.data, this.afAuth.getUidUser()).then(() => {
         this.loading.dismiss();
-        this.router.navigate(['/tabs'])
+        this.router.navigate(['/tabs']);
       }).catch((err) => {
         this.loading.dismiss();
-        this.showAlert("Error", "Error to saving data")
+        this.showAlert("Error", "Error to saving data");
       });
     }).catch((err) => {
       this.loading.dismiss();
-      this.showAlert("Error", "Error to saving Image")
+      this.showAlert("Error", "Error to saving Image");
     });
 
   }
 
+  updateUser() {
+    this.showLoading('Creating...');
+    this.afStore.updateImageProfile(this.data, this.afAuth.getUidUser()).then(() => {
+      this.afStore.updateProfile(this.data, this.afAuth.getUidUser()).then(() => {
+        this.loading.dismiss();
+        this.router.navigate(['/tabs']);
+      }).catch((err) => {
+        this.loading.dismiss();
+        this.showAlert("Error", "Error to saving data");
+      });
+    }).catch((err) => {
+      this.loading.dismiss();
+      this.showAlert("Error", "Error to saving Image");
+    });
+  }
+
   async getUser() {
     var user;
-    await this.afStore.getProfile(this.afAuth.getCurrentUserUid()).then((data) => {
-      user = data
+    await this.afStore.getProfile(this.afAuth.getUidUser()).then((data) => {
+      user = data;
+      this.data = data;
     });
     return user;
   }
   async getImageProfile() {
     var image;
-    await this.afStore.getImageProfile(this.afAuth.getCurrentUserUid()).then((data) => {
-      image = data
+    await this.afStore.getImageProfile(this.afAuth.getUidUser()).then((data) => {
+      image = data;
     });
     return image;
   }

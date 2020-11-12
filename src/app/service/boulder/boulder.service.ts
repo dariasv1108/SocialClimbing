@@ -26,17 +26,6 @@ export class BoulderService {
     });
   }
 
-  getAllBoulder() {
-
-  }
-
-  async findBoulder(startAt, endAt) {
-    var boulders = [];
-    await this.afStore.findBoulder(startAt, endAt).subscribe((data) => {
-      boulders = data;
-    });
-    return boulders
-  }
   async showAlert(header: string, message: string) {
     const alert = await this.alert.create({
       header,
@@ -51,9 +40,11 @@ export class BoulderService {
     }).then((overlay) => {
       this.loading = overlay;
       this.loading.present();
-    })
+    });
   }
-
+  getAllBoulder() {
+    return this.afStore.getAllBoulder();
+  }
 
   public get data(): IBoulder {
     return this._data;

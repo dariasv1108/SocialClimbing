@@ -1,3 +1,5 @@
+import { imprimirPantalla } from './../../core/model/util';
+import { BlockService } from './../../service/block/block.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImagesPage implements OnInit {
 
-  constructor() { }
+  private imageBlock;
+
+  constructor(private blockServ: BlockService) {
+    new imprimirPantalla('pagina', this.imageBlock);
+  }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.getImages();
+  }
+
+  async getImages() {
+    this.imageBlock = await this.blockServ.getAllBlockUser();
+  }
+
+  doRefresh(event) {
+    this.getImages();
+    setTimeout(() => {
+      event.target.complete();
+    }, 1500);
   }
 
 }

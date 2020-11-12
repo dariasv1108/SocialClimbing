@@ -5,6 +5,10 @@ import { TabsPage } from './tabs.page';
 import { ProfilePageModule } from '../profile/profile.module';
 import { CameraPageModule } from '../camera/camera.module';
 import { MapaPageModule } from '../mapa/mapa.module';
+import { ImagesPageModule } from '../images/images.module';
+import { FollowersPageModule } from '../followers/followers.module';
+import { SettingsPageModule } from '../settings/settings.module';
+import { BoulderPageModule } from '../boulder/boulder.module';
 
 const routes: Routes = [
   {
@@ -22,6 +26,22 @@ const routes: Routes = [
       {
         path: 'camera',
         loadChildren: () => CameraPageModule,
+      },
+      {
+        path: 'images',
+        loadChildren:  () => ImagesPageModule
+      },
+      {
+        path: 'followers',
+        loadChildren: () => FollowersPageModule
+      },
+      {
+        path: 'settings',//
+        loadChildren: () => SettingsPageModule
+      },
+      {
+        path: 'boulder',//
+        loadChildren: () => BoulderPageModule
       },
       {
         path: '',

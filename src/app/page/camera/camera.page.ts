@@ -102,7 +102,7 @@ export class CameraPage implements OnInit {
   private setBackground() {
     this.background.src = this.image;
     this.background.onload = () => {
-      this.resizeCanvasImage(this.background)
+      this.resizeCanvasImage(this.background);
     }
   }
   private movedHand(ev) {
@@ -215,7 +215,7 @@ export class CameraPage implements OnInit {
   }
   private settings = {
     max_width: this.plt.width(),
-    max_height: this.plt.height()
+    max_height: this.plt.height() - this.plt.height() * 0.15
   }
   private resizeCanvasImage(img) {
     var imgWidth = img.width;

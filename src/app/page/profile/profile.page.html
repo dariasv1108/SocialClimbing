@@ -2,9 +2,9 @@
   <ion-toolbar>
     <ion-item>
       <ion-avatar slot="start">
-        <img src={{image}}>
+        <img src={{profileSer.data.imageProfile}}>
       </ion-avatar>
-      <ion-label>{{user.userNick}}</ion-label>
+      <ion-label>{{profileSer.data.userNick}}</ion-label>
       <ion-button (click)='logout()'>Salir</ion-button>
     </ion-item>
   </ion-toolbar>

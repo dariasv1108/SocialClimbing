@@ -1,7 +1,9 @@
+import { imprimirPantalla } from './../../core/model/util';
 import { IUser } from './../../interface/IUser';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { imprimirPantalla } from 'src/app/core/model/util';
+import { error } from 'util';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root'
@@ -9,30 +11,39 @@ import { imprimirPantalla } from 'src/app/core/model/util';
 export class AuthService {
 
 	private user: IUser = {};
+	private uidUser: string;
 
-	constructor(private afAuth: AngularFireAuth) { }
+	constructor(private afAuth: AngularFireAuth) {
+	}
 
 	async signOn() {
 		const { user } = this;
+		let result: boolean
 		new imprimirPantalla(['User', user.email, 'Password', user.password]);
-		try {
-			this.login();
-			if (this.isUserVerified) {
-				return true;
-			}
-			return false;
-		} catch (err) {
-			new imprimirPantalla(err);
-			return false
+		console.log('verified', this.isUserVerified())
+		if (this.isUserVerified()) {
+			await this.login().then(() => {
+				new imprimirPantalla('login', true)
+				result = true
+			}).catch(() => {
+				new imprimirPantalla('login', false)
+				result = false
+			})
+		} else {
+			result = false
 		}
+		return result;
+
 	}
 	logOut() {
+		this.uidUser = '';
 		return this.afAuth.auth.signOut();
 	}
-	getCurrentUserUid() {
-		return this.afAuth.auth.currentUser.uid;
+	generateUidUser() {
+		return this.afAuth.authState;
 	}
 	setUser(user) {
+		new imprimirPantalla(user)
 		this.user = user;
 	}
 	private login() {
@@ -41,7 +52,15 @@ export class AuthService {
 	private sendVerificationEmail() {
 		return this.afAuth.auth.currentUser.sendEmailVerification();
 	}
-	private isUserVerified() {
-		return this.afAuth.auth.currentUser.emailVerified;
+	private async isUserVerified() {
+		new imprimirPantalla(this.afAuth.auth)
+		return await this.afAuth.auth.currentUser.emailVerified;
+	}
+
+	getUidUser() {
+		return this.uidUser;
+	}
+	setUidUser(uid: string) {
+		this.uidUser = uid;
 	}
 }

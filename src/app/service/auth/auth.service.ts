@@ -20,7 +20,6 @@ export class AuthService {
 		const { user } = this;
 		let result: boolean
 		new imprimirPantalla(['User', user.email, 'Password', user.password]);
-		console.log('verified', this.isUserVerified())
 		if (this.isUserVerified()) {
 			await this.login().then(() => {
 				new imprimirPantalla('login', true)
@@ -56,7 +55,9 @@ export class AuthService {
 		new imprimirPantalla(this.afAuth.auth)
 		return await this.afAuth.auth.currentUser.emailVerified;
 	}
-
+	forgotPassword(email) {
+		return this.afAuth.auth.sendPasswordResetEmail(email);
+	}
 	getUidUser() {
 		return this.uidUser;
 	}

@@ -60,9 +60,7 @@ export class SettingsPage implements OnInit {
   continue() {
     this.updateProfile.data = this.user;
     if (this.bandera) {
-      console.log(this.canvasElement)
       this.image = this.canvasElement.toDataURL();
-      console.log('this.image', this.image)
       this.updateProfile.data.imageProfile = this.image;
     }
     this.updateProfile.updateUser();

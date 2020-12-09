@@ -9,6 +9,7 @@ import { ImagesPageModule } from '../images/images.module';
 import { FollowersPageModule } from '../followers/followers.module';
 import { SettingsPageModule } from '../settings/settings.module';
 import { BoulderPageModule } from '../boulder/boulder.module';
+import { BlockPageModule } from '../block/block.module';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'boulder',//
         loadChildren: () => BoulderPageModule
+      },
+      {
+        path: 'block',//
+        loadChildren: () => BlockPageModule
       },
       {
         path: '',

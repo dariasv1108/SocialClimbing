@@ -1,6 +1,8 @@
 import { imprimirPantalla } from './../../core/model/util';
 import { BlockService } from './../../service/block/block.service';
 import { Component, OnInit } from '@angular/core';
+import { IBlock } from 'src/app/interface/IBlock';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-images',
@@ -9,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImagesPage implements OnInit {
 
-  private imageBlock;
+  private imageBlock = [];
 
-  constructor(private blockServ: BlockService) {
+  constructor(private blockServ: BlockService, private router: Router) {
     new imprimirPantalla('pagina', this.imageBlock);
   }
 
@@ -23,7 +25,22 @@ export class ImagesPage implements OnInit {
   }
 
   async getImages() {
-    this.imageBlock = await this.blockServ.getAllBlockUser();
+    this.imageBlock = []
+    await this.blockServ.getAllBlockUser().subscribe(data => {
+      data.forEach(block => {
+        this.imageBlock.push(block.data())
+      })
+    });
+    new imprimirPantalla('pagina', this.imageBlock);
+  }
+
+  openBlock(block) {
+    this.blockServ.data = {
+      nameBlock: block.name,
+      imageBlock: block.imageBlock,
+      level: block.level
+    }
+    this.router.navigate(['tabs/block'])
   }
 
   doRefresh(event) {

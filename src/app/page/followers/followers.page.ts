@@ -26,6 +26,7 @@ export class FollowersPage implements OnInit {
         boul.id = boulder.id;
         boul.name = boulder.data().name;
         boul.position = boulder.data().position;
+        boul.follower = boulder.data().follower;
         bouldersAll.push(boul);
       });
     });
@@ -49,7 +50,6 @@ export class FollowersPage implements OnInit {
   }
   private openBoulder(boulder){
     this.boulderService.data= boulder
-    console.log( this.boulderService.data)
     this.router.navigate(['/tabs/boulder'])
   }
 }

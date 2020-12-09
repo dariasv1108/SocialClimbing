@@ -3,7 +3,6 @@ import { imprimirPantalla } from './../../core/model/util';
 import { LoginServiceService } from './../../service/login/login-service.service';
 import { Component } from '@angular/core';
 import { IUser } from 'src/app/interface/IUser';
-import { LoadingController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({

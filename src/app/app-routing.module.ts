@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'sing-up',
-    loadChildren: () => import('./page/sign-up/sing-up.module').then(m => m.SingUpPageModule), canActivate: [AuthGuard]
+    loadChildren: () => import('./page/sign-up/sing-up.module').then(m => m.SingUpPageModule),
   },
   {
     path: 'tabs',
@@ -50,8 +50,11 @@ const routes: Routes = [
   },
   {
     path: 'boulder',
-    loadChildren: () => import('./page/boulder/boulder.module').then(m => m.BoulderPageModule),
-    canActivate: [IsUserGuard]
+    loadChildren: () => import('./page/boulder/boulder.module').then(m => m.BoulderPageModule), canActivate: [AuthGuard]
+  },
+  {
+    path: 'block',
+    loadChildren: () => import('./page/block/block.module').then(m => m.BlockPageModule), canActivate: [AuthGuard]
   },
   // {
   //   path: 'create-boulder',

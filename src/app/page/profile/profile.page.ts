@@ -28,7 +28,6 @@ export class ProfilePage implements OnInit {
   }
   async getUser() {
     this.user = await this.profileSer.getUser();
-    console.log(this.profileSer.data.userNick)
   }
   async logout() {
     await this.afth.logOut();

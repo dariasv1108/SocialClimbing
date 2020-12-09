@@ -3,7 +3,7 @@ export class imprimirPantalla {
 
     constructor(mensage: any, mensageDos?: any) {
         if (this.mostrar) {
-            console.log(mensage, mensageDos);
+            // console.log(mensage, mensageDos);
         }
     }
 }

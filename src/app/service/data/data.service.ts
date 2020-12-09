@@ -69,6 +69,12 @@ export class DataService {
     new imprimirPantalla(boulder)
     return this.afStoreSv.collection('boulder').add(boulder);
   }
+  newFollower(boulder: IBoulder) {
+    new imprimirPantalla(boulder)
+    return this.afStoreSv.collection('boulder').doc(boulder.id).update({
+      "follower" : boulder.follower
+    })
+  }
   addImageProfile(user: IProfile, idUser: string) {
     return firebase.storage().ref().child('Users').child(idUser).child('imageProfile').putString(user.imageProfile, 'data_url');
   }
@@ -78,6 +84,12 @@ export class DataService {
   }
   getAllBoulder() {
     return this.afStoreSv.collection('boulder', ref => ref.orderBy('name')).get();
+  }
+  getAllBlockUser(idUser: string) {
+    return this.afStoreSv.collection('block', ref => ref.where('idUser', '==', idUser)).get()
+  }
+  getAllBlockBoulder(idBoulder: string) {
+    return this.afStoreSv.collection('block', ref => ref.where('idBoulder', '==', idBoulder)).get()
   }
   getImagesBlockUser(idUser: string) {
     var blocks = [];
@@ -113,12 +125,12 @@ export class DataService {
     });
     return blocks;
   }
-  updateImageProfile(user: IProfile, idUser: string){
-    firebase.storage().ref().child('Users').child(idUser).child('imageProfile').delete().then(()=>{
+  updateImageProfile(user: IProfile, idUser: string) {
+    firebase.storage().ref().child('Users').child(idUser).child('imageProfile').delete().then(() => {
     })
     return firebase.storage().ref().child('Users').child(idUser).child('imageProfile').putString(user.imageProfile, 'data_url');
   }
-  updateProfile(user: IProfile, idUser: string){
+  updateProfile(user: IProfile, idUser: string) {
     return this.afStoreSv.collection('users').doc(idUser).collection('data').doc('profile').update(user);
   }
 }

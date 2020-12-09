@@ -25,7 +25,7 @@ export class BlockService {
       this.afStore.addImageBlock(this.data, docRef.id).then(() => {
         this.loading.dismiss();
         this.modalCrtl.dismiss();
-        this.router.navigate(['/tabs/profile/images']);
+        this.router.navigate(['/tabs/profile']);
       }).catch((err) => {
         this.loading.dismiss();
         this.showAlert("Error", "Error to saving Image");
@@ -37,10 +37,10 @@ export class BlockService {
   }
 
   getAllBlockUser() {
-    return this.afStore.getImagesBlockUser(this.afAuth.getUidUser());
+    return this.afStore.getAllBlockUser(this.afAuth.getUidUser());
   }
   getAllBlockBoulder(idBoulder) {
-    return this.afStore.getImagesBlockBoulder(idBoulder);
+    return this.afStore.getAllBlockBoulder(idBoulder);
   }
 
   async showAlert(header: string, message: string) {

@@ -5,6 +5,8 @@
         <img src='../../../assets/icon/boulder.png'>
       </ion-avatar>
       <ion-label>{{boulder.name}}</ion-label>
+      <ion-button (click)='unFollow()' *ngIf="subscrito==true">Unfollow</ion-button>
+      <ion-button (click)='follow()' *ngIf="subscrito==false">Follow</ion-button>
     </ion-item>
   </ion-toolbar>
 </ion-header>
@@ -15,8 +17,8 @@
   </ion-refresher>
   <ion-row>
     <ion-col size=6 *ngFor="let item of imageBlock">
-      <ion-item>
-        <img src={{item}}>
+      <ion-item (click)="openBlock(item)">
+        <img src={{item.imageBlock}}>
       </ion-item>
     </ion-col>
   </ion-row>

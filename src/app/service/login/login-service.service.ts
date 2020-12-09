@@ -24,7 +24,7 @@ export class LoginServiceService {
     await this.afAuth.setUser(this.user);
     if (result == true) {
       await this.showLoading('Authenticating...');
-      new imprimirPantalla('login serivce',await this.afAuth.signOn())
+      new imprimirPantalla('login serivce', await this.afAuth.signOn())
       if (await this.afAuth.signOn()) {
         this.subscription = this.afAuth.generateUidUser().subscribe(async (data) => {
           new imprimirPantalla(data)
@@ -59,11 +59,26 @@ export class LoginServiceService {
       } else {
         await this.dismissLoading()
         this.showAlert('Error', "User dont't verified or not exist");
+        window.localStorage.removeItem('idUser');
+        window.localStorage.removeItem('uidUser');
+        this.router.navigate(['/home']);
       };
     } else {
       await this.dismissLoading()
       this.showAlert('Error', "Bad fields");
     }
+  }
+  async forgotPassword(email) {
+    await this.showLoading('Authenticating...');
+    this.afAuth.forgotPassword(email).then(async () => {
+      await this.dismissLoading();
+      this.showAlert('Message', 'Email send');
+      this.router.navigate(['/home']);
+    }).catch(async () => {
+      await this.dismissLoading();
+      this.showAlert('Error', 'Check the email address');
+      this.router.navigate(['/home']);
+    })
   }
   async showAlert(header: string, message: string) {
     const alert = await this.alert.create({
@@ -74,7 +89,7 @@ export class LoginServiceService {
     await alert.present();
   }
   dismissLoading() {
-    new imprimirPantalla('apagando',this.loading)
+    new imprimirPantalla('apagando', this.loading)
     if (this.loading) {
       this.loading.dismiss();
       this.loading = null;

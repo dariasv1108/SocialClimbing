@@ -41,7 +41,6 @@ export class LoginServiceService {
             }
             await this.dismissLoading();
             this.showAlert('Welcome', 'Login successfully!!');
-            new imprimirPantalla(dataUno, 'aki')
             if (dataUno) {
               await this.dismissLoading();
               this.router.navigate(['/tabs']);

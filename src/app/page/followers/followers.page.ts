@@ -12,6 +12,18 @@ export class FollowersPage implements OnInit {
   private boulders: IBoulder[];
   private boulderListBackup: IBoulder[];
   constructor(private boulderService: BoulderService, private router: Router) {
+    var bouldersAll = [];
+     this.boulderService.getAllBoulder().subscribe(boulders => {
+      boulders.forEach((boulder) => {
+        let boul: IBoulder = {};
+        boul.id = boulder.id;
+        boul.name = boulder.data().name;
+        boul.position = boulder.data().position;
+        boul.follower = boulder.data().follower;
+        bouldersAll.push(boul);
+      });
+    });
+    this.boulders = bouldersAll;
   }
 
   async ngOnInit() {
